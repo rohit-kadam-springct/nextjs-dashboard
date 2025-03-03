@@ -1,5 +1,5 @@
 import "@/app/ui/global.css"
-import { inter, lusitana } from "./ui/font";
+import { inter, lusitana } from "./ui/fonts";
 
 export default function RootLayout({
   children,
