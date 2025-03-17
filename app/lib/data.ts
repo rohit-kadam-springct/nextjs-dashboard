@@ -6,6 +6,7 @@ import {
   InvoicesTable,
   LatestInvoiceRaw,
   Revenue,
+  User,
 } from './definitions';
 import { formatCurrency } from './utils';
 
@@ -248,5 +249,15 @@ export async function fetchCustomerCount() {
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch customer count.');
+  }
+}
+
+export async function getUser(email: string): Promise<User> {
+  try {
+    const users = await sql<User[]>`SELECT * FROM users WHERE email=${email}`
+    return users[0]
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error("Failed to fetch customer count.")
   }
 }
